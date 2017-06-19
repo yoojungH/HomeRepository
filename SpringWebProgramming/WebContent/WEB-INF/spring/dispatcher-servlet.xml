@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- @어노테이션을 이용해서 개발 할 수 있도록 설정 -->
+	<mvc:annotation-driven />
+
+	<!-- 어떤 패키지부터 @어노테이션을 찾아서 쓸 것인지 -->
+	<context:component-scan base-package="com.mycompany.myapp"></context:component-scan>
+
+	<!-- Controller 가 필요없는 정적 리소스 폴더 설정, resources는 url로 접근가능하기 때문에 굳이 Controller사용할 필요없음 -->
+	<!-- ** -> subfolder밑에 어디든  -->
+	<mvc:resources mapping="/resources/**" location="/resources/"/>
+	
+	<!-- 스프링 관리 객체로 등록 -->
+	<bean id="viewResolver"
+		  class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		  p:prefix="/WEB-INF/views/"
+		  p:suffix=".jsp" />
+
+	<bean id="multipartResolver"
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+		  
+	<bean id="exam10Dao2" class="com.mycompany.myapp.dao.Exam10Dao2Impl"/>
+	
+	<!-- Setter 주입 -->
+	<!-- How1
+	<bean id="exam10Servcie4" class="com.mycompany.myapp.service.Exam10Service4Impl"
+		  p:exam10Dao-ref="exam10Dao2"/>
+	-->  
+	<!-- How2 -->
+	
+	<bean id="exam10Servcie4" class="com.mycompany.myapp.service.Exam10Service4Impl">
+		<property name="exam10Dao" ref="exam10Dao2"></property>
+	</bean>
+	
+	<!-- 생성자 주입 -->
+	<bean id="exam10Servcie5" class="com.mycompany.myapp.service.Exam10Service5Impl">
+		<constructor-arg ref="exam10Dao2"/>
+	</bean>
+	
+</beans>
