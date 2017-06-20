@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/IoTCourse/GitRepository/HomeRepository/Hardware/src/hardware/motor/SG90ServoPCA9685Step.java</file>
             <file>file:/D:/IoTCourse/GitRepository/HomeRepository/Hardware/src/hardware/sensor/UltrasonicSensor.java</file>
             <file>file:/D:/IoTCourse/GitRepository/HomeRepository/Hardware/src/hardware/motor/SG90ServoPCA9685Duration.java</file>
+            <file>file:/D:/IoTCourse/GitRepository/HomeRepository/Hardware/src/hardware/sensor/GasSensor.java</file>
         </group>
     </open-files>
 </project-private>

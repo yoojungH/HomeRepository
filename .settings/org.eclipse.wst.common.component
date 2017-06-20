@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="HomeRepository">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Hardware/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/IoTWebProgramming/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/IoTWebProgramming/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Network/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/SensingCarLocalWebControl/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/SensingCarLocalWebControl/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/SpringWebProgramming/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/SpringWebProgramming/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebProjectTemplate/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebProjectTemplate/src/test/java"/>
+        <property name="context-root" value="HomeRepository"/>
+        <property name="java-output-path" value="/HomeRepository/Hardware/build/classes"/>
+    </wb-module>
+</project-modules>
