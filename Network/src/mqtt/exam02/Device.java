@@ -8,7 +8,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.json.JSONObject;
 
 public class Device {
-
 	//Field
 	private String url = "tcp://localhost:1883";
 	private String myClientId = "device1";
@@ -16,11 +15,10 @@ public class Device {
 	private String topicResponse = "/devices/" + myClientId + "/response";
 	private int qos = 1;
 	private MqttClient mqttClient;
-
+	
 	private MqttCallback callback = new MqttCallback() {
 		@Override
 		public void deliveryComplete(IMqttDeliveryToken imdt) {
-			throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 		}
 
 		@Override
@@ -38,40 +36,39 @@ public class Device {
 			}
 		}
 	};
-
+	
 	//Constructor
 	public Device(String myClientId) throws MqttException {
 		this.myClientId = myClientId;
-		this.topicRequest = "/devices/" + myClientId + "/request";
-		this.topicResponse = "/devices/" + myClientId + "/response";
+		topicRequest = "/devices/" + myClientId + "/request";
+		topicResponse = "/devices/" + myClientId + "/response";		
+		
 		mqttClient = new MqttClient(url, myClientId);
 		mqttClient.setCallback(callback);
 		mqttClient.connect();
 	}
-
+	
 	//Method
 	public void subscribe() throws MqttException {
 		mqttClient.subscribe(topicResponse);
-	}
-
+	} 
+	
 	public void publish(String targetClientId, String text) throws MqttException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("from", myClientId);
 		jsonObject.put("to", targetClientId);
 		jsonObject.put("text", text);
 		String json = jsonObject.toString();
-		
 		MqttMessage mqttMessage = new MqttMessage(json.getBytes());
-		mqttMessage.setQos(1);
+		mqttMessage.setQos(qos);
 		mqttClient.publish(topicRequest, mqttMessage);
 	}
-
+	
 	public void close() throws MqttException {
-		if (mqttClient != null) {
+		if(mqttClient != null) {
 			mqttClient.disconnect();
 			mqttClient.close();
 			mqttClient = null;
 		}
 	}
-
 }

@@ -9,13 +9,13 @@ public class Device1Example {
 		device.subscribe();
 		
 		Scanner scanner = new Scanner(System.in, "UTF-8");
-		
 		while(true) {
-			System.out.print("input message of q(quit): ");
+			System.out.print("input message or q(quit): ");
 			String text = scanner.nextLine();
 			if(text.equals("q")) break;
 			device.publish("device2", text);
 		}
+		
 		device.close();
 	}
 }

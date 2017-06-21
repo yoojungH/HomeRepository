@@ -5,17 +5,17 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 
 public class Device2Example {
 	public static void main(String[] args) throws MqttException {
-		Device device = new Device("device1");
+		Device device = new Device("device2");
 		device.subscribe();
 		
 		Scanner scanner = new Scanner(System.in, "UTF-8");
-		
 		while(true) {
-			System.out.print("input message of q(quit): ");
+			System.out.print("input message or q(quit): ");
 			String text = scanner.nextLine();
 			if(text.equals("q")) break;
-			device.publish("device2", text);
+			device.publish("device1", text);
 		}
+		
 		device.close();
 	}
 }

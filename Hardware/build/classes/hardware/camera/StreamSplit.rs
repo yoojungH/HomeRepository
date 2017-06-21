@@ -1,0 +1,2 @@
+hardware.camera.StreamSplit
+hardware.camera.ResizableByteArrayOutputStream
