@@ -19,7 +19,7 @@ public class Coap2CoapClient {
 	//Method
 	public String coap2coap() {
 		//Proxy의 접근 Uri
-		coapClient.setURI("coap://192.168.3.9:5683/coap2coap");
+		coapClient.setURI("coap://192.168.3.127:5683/coap2coap");
 		//Forward되는 리소스의 통신 방법
 		Request request = new Request(CoAP.Code.GET);
 		//Forward되는 리소스의 Uri

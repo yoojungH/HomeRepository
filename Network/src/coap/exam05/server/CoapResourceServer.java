@@ -18,7 +18,7 @@ public class CoapResourceServer {
 	//Constructor
 	public CoapResourceServer() throws Exception {
 		coapServer = new CoapServer();
-		InetSocketAddress isa1 = new InetSocketAddress("192.168.3.9", 5683);
+		InetSocketAddress isa1 = new InetSocketAddress("192.168.3.127", 5683);
 		InetSocketAddress isa2 = new InetSocketAddress("localhost", 5683);
 		coapServer.addEndpoint(new CoapEndpoint(isa1));
 		coapServer.addEndpoint(new CoapEndpoint(isa2));
