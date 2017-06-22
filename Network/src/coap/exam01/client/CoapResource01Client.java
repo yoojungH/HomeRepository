@@ -15,7 +15,7 @@ public class CoapResource01Client {
 	
 	//Method
 	public String get() {
-		coapClient.setURI("coap://192.168.3.9/resource01");
+		coapClient.setURI("coap://192.168.3.42/resource01");
 		CoapResponse response = coapClient.get();
 		if(response.getCode() == CoAP.ResponseCode.CONTENT) {
 			return response.getResponseText();

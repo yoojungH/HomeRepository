@@ -17,7 +17,7 @@ public class HttpGetClient {
 	public static void main(String[] args) throws IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		try {
-			URIBuilder uriBuilder = new URIBuilder("http://192.168.3.11:8080/IoTWebProgramming/http/exam01");
+			URIBuilder uriBuilder = new URIBuilder("http://192.168.3.127:8080/IoTWebProgramming/http/exam01");
 			uriBuilder.setParameter("thermistor", String.valueOf(25));
 			uriBuilder.setParameter("photoresistor", String.valueOf(200));
 			

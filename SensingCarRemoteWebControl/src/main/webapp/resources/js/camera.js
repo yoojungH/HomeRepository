@@ -16,7 +16,7 @@ function camera(command, leftright, updown) {
 				$("#btnLeftright135").attr("onclick", "camera('change', '135', '"+ data.updown + "')");
 				$("#btnLeftright90").attr("onclick", "camera('change', '90', '"+ data.updown + "')");
 				$("#btnLeftright75").attr("onclick", "camera('change', '75', '"+ data.updown + "')");
-				$("#btnLeftright45").attr("onclick", "camera('change', '48', '"+ data.updown + "')");
+				$("#btnLeftright45").attr("onclick", "camera('change', '45', '"+ data.updown + "')");
 				$("#btnLeftright0").attr("onclick", "camera('change', '0', '"+ data.updown + "')");
 				
 				$("#btnUpdown10").attr("onclick", "camera('change', '" + data.leftright + "', '10')");

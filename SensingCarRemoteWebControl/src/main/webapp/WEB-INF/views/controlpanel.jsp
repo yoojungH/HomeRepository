@@ -15,7 +15,8 @@
 		
 		<script src="<%=application.getContextPath()%>/resources/js/camera.js"></script>
 		<script src="<%=application.getContextPath()%>/resources/js/rgbled.js"></script>
-		
+		<script src="<%=application.getContextPath()%>/resources/js/laseremitter.js"></script>
+		<script src="<%=application.getContextPath()%>/resources/js/buzzer.js"></script>
 				
 	</head>
 
@@ -83,22 +84,22 @@
 						<div class="col-lg-3">
 							<div style="background: linear-gradient(#737373, black); color: white; height:150px; background-color: lightgray; padding: 5px; margin-top: 20px;">
 								<div style="text-align: center; font-size: 18px; font-style: italic; font-weight: bold;">LaserEmitter 장치 제어</div>
-								<div style="text-align: center;">현재 상태: <span id="laserEmitterStatus"></span></div>
+								<div style="text-align: center;">현재 상태: <span id="laseremitterStatus">${laseremitterStatus}</span></div>
 								<br/>
 								<div style="text-align: center;">
-									<button type="button" class="btn btn-warning" onclick="laserEmitter('changeStatus', 'on')">ON</button>
-									<button type="button" class="btn btn-info" onclick="laserEmitter('changeStatus', 'off')">OFF</button>
+									<button type="button" class="btn btn-warning" onclick="laseremitter('change', 'on')">ON</button>
+									<button type="button" class="btn btn-info" onclick="laseremitter('change', 'off')">OFF</button>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-3">
 							<div style="background: linear-gradient(#737373, black); color: white; height:150px; background-color: lightgray; padding: 5px; margin-top: 20px;">
 								<div style="text-align: center; font-size: 18px; font-style: italic; font-weight: bold;">Buzzer 장치 제어</div>
-								<div style="text-align: center">현재 상태: <span id="buzzerStatus"></span></div>
+								<div style="text-align: center">현재 상태: <span id="buzzerStatus">${buzzerStatus}</span></div>
 								<br/>  
 								<div style="text-align: center;">
-									<button type="button" class="btn btn-warning" onclick="buzzer('changeStatus', 'on')">ON</button>
-									<button type="button" class="btn btn-info" onclick="buzzer('changeStatus', 'off')">OFF</button>
+									<button type="button" class="btn btn-warning" onclick="buzzer('change', 'on')">ON</button>
+									<button type="button" class="btn btn-info" onclick="buzzer('change', 'off')">OFF</button>
 								</div>                                
 							</div>
 						</div>      

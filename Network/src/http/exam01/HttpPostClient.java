@@ -22,7 +22,7 @@ public class HttpPostClient {
 	public static void main(String[] args) throws IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		try {
-			HttpPost httpPost = new HttpPost("http://192.168.3.11:8080/IoTWebProgramming/http/exam01");
+			HttpPost httpPost = new HttpPost("http://192.168.3.127:8080/IoTWebProgramming/http/exam01");
 			
 			List<NameValuePair> params = new ArrayList<>();
 			params.add(new BasicNameValuePair("thermistor", String.valueOf(25)));

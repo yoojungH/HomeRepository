@@ -29,7 +29,7 @@ public class HttpMultipartClient {
 		File attach = new File("C:/Temp/사막.jpg");
 		FileBody attachBody = new FileBody(attach, ContentType.create("image/jpeg"));
 		
-		HttpPost httpPost = new HttpPost("http://192.168.3.11:8080/IoTWebProgramming/http/exam02");
+		HttpPost httpPost = new HttpPost("http://192.168.3.127:8080/IoTWebProgramming/http/exam02");
 	
 		MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
 		//문자 파트

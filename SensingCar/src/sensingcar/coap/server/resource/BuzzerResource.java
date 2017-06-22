@@ -59,7 +59,7 @@ public class BuzzerResource extends CoapResource {
 			}
 			JSONObject responseJsonObject = new JSONObject();
 			responseJsonObject.put("result", "success");
-			responseJsonObject.put("speed", currStatus);
+			responseJsonObject.put("status", currStatus);
 			String responseJson = responseJsonObject.toString();
 			exchange.respond(responseJson);
 		} catch (Exception e) {
