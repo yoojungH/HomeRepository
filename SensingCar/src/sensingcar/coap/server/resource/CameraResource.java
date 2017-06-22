@@ -65,7 +65,7 @@ public class CameraResource extends CoapResource {
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
-		//Json - { "command":"change", "leftright":"90", "updown":"10" }
+		//Json - { "command":"change", "leftright":"80", "updown":"30" }
 		//Json - { "command":"status" }
 		try {
 			String requestJson = exchange.getRequestText();

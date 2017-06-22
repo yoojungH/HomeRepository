@@ -61,7 +61,7 @@ public class BackTireResource extends CoapResource {
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
-		//{ "command":"change", "currDirection":"forward", "speed":"1000" }
+		//{"command" : "change", "direction":"forward", "speed":"0"}
 		//{ "command":"status" }
 		try {
 			String requestJson = exchange.getRequestText();

@@ -77,7 +77,7 @@ public class UltrasonicSensorResource extends CoapResource {
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
-		//{ "command":"change", "line0":"xxx", "line1":"xxx" }
+		//{ "command":"change", "angle":"65"}
 		//{ "command":"status" }
 		try {
 			String requestJson = exchange.getRequestText();
