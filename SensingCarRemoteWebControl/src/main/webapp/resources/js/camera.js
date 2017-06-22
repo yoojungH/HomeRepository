@@ -1,12 +1,4 @@
-function camera(command, value) {
-	var leftright = cameraStatus.leftright;
-	var updown = cameraStatus.updown;
-	if (command == "leftright") {
-		leftright = value;
-	} else if (command == "updown") {
-		updown = value;
-	}
-
+function camera(command, leftright, updown) {
 	var json = {
 		"command" : "change",
 		"leftright" : leftright,
@@ -19,11 +11,18 @@ function camera(command, value) {
 		method : "post",
 		success : function(data) {
 			if (data.result == "success") {
-				$("#cameraStatus").html(
-						"leftright=" + data.leftright + "; updown="
-								+ data.updown);
-				cameraStatus.leftright = data.leftright;
-				cameraStatus.updown = data.updown;
+				$("#cameraStatus").html("leftright=" + data.leftright + "; updown=" + data.updown);
+				$("#btnLeftright180").attr("onclick", "camera('change', '180', '"+ data.updown + "')");
+				$("#btnLeftright135").attr("onclick", "camera('change', '135', '"+ data.updown + "')");
+				$("#btnLeftright90").attr("onclick", "camera('change', '90', '"+ data.updown + "')");
+				$("#btnLeftright75").attr("onclick", "camera('change', '75', '"+ data.updown + "')");
+				$("#btnLeftright45").attr("onclick", "camera('change', '48', '"+ data.updown + "')");
+				$("#btnLeftright0").attr("onclick", "camera('change', '0', '"+ data.updown + "')");
+				
+				$("#btnUpdown10").attr("onclick", "camera('change', '" + data.leftright + "', '10')");
+				$("#btnUpdown45").attr("onclick", "camera('change', '" + data.leftright + "', '45')");
+				$("#btnUpdown90").attr("onclick", "camera('change', '" + data.leftright + "', '90')");
+				
 			}
 		}
 	});

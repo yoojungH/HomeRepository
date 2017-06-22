@@ -12,10 +12,7 @@
 		<script src="<%=application.getContextPath()%>/resources/highcharts/code/themes/gray.js"></script>  
 		<style>@media screen and (min-width: 480px) { #title { height: 10px; } }</style>
 		
-		<script type="text/javascript">
-			var cameraStatus = {"leftright":"${leftright}", "updown":"${updown}"};
 		
-		</script>
 		<script src="<%=application.getContextPath()%>/resources/js/camera.js"></script>
 		<script src="<%=application.getContextPath()%>/resources/js/rgbled.js"></script>
 		
@@ -56,15 +53,15 @@
 								<br/>
 								<div style="text-align: center;">
 									좌우<br/>
-									<button type="button" class="btn btn-danger" onclick="camera('leftright', '180')">&lt;&lt;</button> 
-									<button type="button" class="btn btn-warning" onclick="camera('leftright', '135')">&lt;</button> 
-									<button type="button" class="btn btn-default" onclick="camera('leftright', '90')">정면</button>                                    
-									<button type="button" class="btn btn-info" onclick="camera('leftright', '45')">&gt;</button>
-									<button type="button" class="btn btn-primary" onclick="camera('leftright', '0')">&gt;&gt;</button>                                    
+									<button id="btnLeftright180" type="button" class="btn btn-danger" onclick="camera('change','180', '${updown}')">&lt;&lt;</button> 
+									<button id="btnLeftright135" type="button" class="btn btn-warning" onclick="camera('change','135', '${updown}')">&lt;</button> 
+									<button id="btnLeftright90" type="button" class="btn btn-default" onclick="camera('change','90', '${updown}')">정면</button>                                    
+									<button id="btnLeftright45" type="button" class="btn btn-info" onclick="camera('change','45','${updown}')">&gt;</button>
+									<button id="btnLeftright0" type="button" class="btn btn-primary" onclick="camera('change','0', '${updown}')">&gt;&gt;</button>                                    
 									<br/><br/>상하<br/>
-									<button type="button" class="btn btn-default" onclick="camera('updown', '10')">정면</button>
-									<button type="button" class="btn btn-info" onclick="camera('updown', '45')">45도</button>
-									<button type="button" class="btn btn-primary" onclick="camera('updown', '75')">75도</button>
+									<button id="btnUpdown10" type="button" class="btn btn-default" onclick="camera('change','${leftright}', '10')">정면</button>
+									<button id="btnUpdown45" type="button" class="btn btn-info" onclick="camera('change','${leftright}', '45')">45도</button>
+									<button id="btnUpdown90" type="button" class="btn btn-primary" onclick="camera('change','${leftright}', '75')">75도</button>
 								</div>
 							</div>
 						</div>       
