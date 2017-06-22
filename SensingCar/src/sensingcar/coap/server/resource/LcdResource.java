@@ -40,7 +40,7 @@ public class LcdResource extends CoapResource {
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
-		//{ "command":"change", "line0":"Hello", "line1":"your World" }
+		//{ "command":"change", "line0":"xxx", "line1":"xxx" }
 		//{ "command":"status" }
 		try {
 			String requestJson = exchange.getRequestText();

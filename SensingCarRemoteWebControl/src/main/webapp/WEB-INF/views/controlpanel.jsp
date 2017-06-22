@@ -13,37 +13,13 @@
 		<style>@media screen and (min-width: 480px) { #title { height: 10px; } }</style>
 		
 		<script type="text/javascript">
-			var cameraStatus = {"leftright":"90","updown":"10"};
-			function camera(command, value) {
-				var leftright = cameraStatus.leftright;
-				var updown = cameraStatus.updown;
-				
-				if(command == "leftright") {
-					leftright = value;
-				}else if(command == "updown") {
-					updown = value;
-				}
-				
-				var json = {"command":"change", "leftright":leftright, "updown":updown};
-				
-				
-				$.ajax({
-					url:"http://" + location.host + "/SensingCarRemoteWebControl/camera",
-					data: json,
-					method: "post",
-					success: function(data) {
-						if(data.result == "success"){
-							$("#cameraStatus").html("leftright=" + data.leftright + "; updown=" + data.updown);
-							cameraStatus.leftright = data.leftright;
-							cameraStatus.updown = data.updown;
-						}
-					}
-				});
-				
-			}
+			var cameraStatus = {"leftright":"${leftright}", "updown":"${updown}"};
 		
 		</script>
+		<script src="<%=application.getContextPath()%>/resources/js/camera.js"></script>
+		<script src="<%=application.getContextPath()%>/resources/js/rgbled.js"></script>
 		
+				
 	</head>
 
 	<body style="background-color: black;">
@@ -65,7 +41,7 @@
 					<div class="row">
 						<div class="col-md-5">
 							<div style="height:210px;">
-								<img class="img-responsive"  src="<%=application.getContextPath()%>/resources/image/smartcar2.jpg" style="width:100%;height:100%;"/>
+								<img class="img-responsive"  src="<%=application.getContextPath()%>/resources/image/myCar.jpg" style="width:340px;height:210px;"/>
 							</div>
 						</div>
 						<div class="col-md-3">
@@ -76,7 +52,7 @@
 						<div class="col-md-4">
 							<div style="background: linear-gradient(#737373, black); color: white; height:210px; padding: 5px;">
 								<div style="text-align: center; font-size: 18px; font-style: italic; font-weight: bold;">Camera 장치 제어</div>
-								<div style="text-align: center">현재 상태: <span id="cameraStatus"></span></div>
+								<div style="text-align: center">현재 상태: <span id="cameraStatus">leftright=${leftright}; updown=${updown}</span></div>
 								<br/>
 								<div style="text-align: center;">
 									좌우<br/>
@@ -98,12 +74,12 @@
 						<div class="col-lg-3">
 							<div style="background: linear-gradient(#737373, black); color: white; height:150px; background-color: lightgray; padding: 5px; margin-top: 20px;">
 								<div style="text-align: center; font-size: 18px; font-style: italic; font-weight: bold;">RGBLed 장치 제어</div>
-								<div style="text-align: center">현재 상태: <div id="rgbLedStatus" style="width:15px;height:15px;display: inline-block"></div></div>
+								<div style="text-align: center">현재 상태: <div id="rgbledStatus" style="width:15px;height:15px;display: inline-block; background-color: rgb(${red},${green},${blue});"></div></div>
 								<br/>
 								<div style="text-align: center;">
-									<button type="button" class="btn btn-danger" onclick="rgbLed('changeColor', '[255, 0, 0]')">Red</button>
-									<button type="button" class="btn btn-success" onclick="rgbLed('changeColor', '[0, 255, 0]')">Green</button>
-									<button type="button" class="btn btn-primary" onclick="rgbLed('changeColor', '[0, 0, 255]')">Blue</button>
+									<button type="button" class="btn btn-danger" onclick="rgbled('change', '255','0','0')">Red</button>
+									<button type="button" class="btn btn-success" onclick="rgbled('change', '0','255','0')">Green</button>
+									<button type="button" class="btn btn-primary" onclick="rgbled('change', '0','0','255')">Blue</button>
 								</div>
 							</div>
 						</div>
