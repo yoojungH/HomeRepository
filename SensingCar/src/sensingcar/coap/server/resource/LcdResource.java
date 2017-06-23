@@ -22,7 +22,7 @@ public class LcdResource extends CoapResource {
 	public LcdResource() throws Exception {
 		super("lcd");
 		lcd = new LCD1602(0x27);
-		setText("RPI-11-2", getIPaddress());
+		setText("RPI-0-2", getIPaddress());
 	}
 	
 	//Method

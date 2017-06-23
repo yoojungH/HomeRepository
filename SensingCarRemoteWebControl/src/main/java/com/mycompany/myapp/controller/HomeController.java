@@ -36,7 +36,7 @@ public class HomeController {
 		jsonObject = new JSONObject(json);
 		model.addAttribute("leftright", jsonObject.getString("leftright"));
 		model.addAttribute("updown", jsonObject.getString("updown"));
-		model.addAttribute("cameraUrl", "http://192.168.3.42:50001?action=stream");
+		//model.addAttribute("cameraUrl", "http://192.168.3.42:50001?action=stream");
 		/*------------------------------------------------------------------------------*/
 
 		jsonObject = new JSONObject();
@@ -70,6 +70,40 @@ public class HomeController {
 		json = coapResponse.getResponseText();
 		jsonObject = new JSONObject(json);
 		model.addAttribute("buzzerStatus", jsonObject.getString("status"));
+		/*------------------------------------------------------------------------------*/
+		
+		jsonObject = new JSONObject();
+		jsonObject.put("command", "status");
+		json = jsonObject.toString();
+		coapClient.setURI("coap://192.168.3.42/ultrasonicsensor");
+		coapResponse = coapClient.post(json, MediaTypeRegistry.APPLICATION_JSON);
+		json = coapResponse.getResponseText();
+		jsonObject = new JSONObject(json);
+		model.addAttribute("ultrasonicsensorAngle", jsonObject.getString("angle"));
+		model.addAttribute("ultrasonicsensorDistance", jsonObject.getString("distance"));
+		
+		/*------------------------------------------------------------------------------*/
+		
+		jsonObject = new JSONObject();
+		jsonObject.put("command", "status");
+		json = jsonObject.toString();
+		coapClient.setURI("coap://192.168.3.42/lcd");
+		coapResponse = coapClient.post(json, MediaTypeRegistry.APPLICATION_JSON);
+		json = coapResponse.getResponseText();
+		jsonObject = new JSONObject(json);
+		model.addAttribute("lcdline0", jsonObject.getString("line0"));	
+		model.addAttribute("lcdline1", jsonObject.getString("line1"));
+		/*------------------------------------------------------------------------------*/
+		
+		jsonObject = new JSONObject();
+		jsonObject.put("command", "status");
+		json = jsonObject.toString();
+		coapClient.setURI("coap://192.168.3.42/fronttire");
+		coapResponse = coapClient.post(json, MediaTypeRegistry.APPLICATION_JSON);
+		json = coapResponse.getResponseText();
+		jsonObject = new JSONObject(json);
+		model.addAttribute("fronttireAngle", jsonObject.getString("angle"));
+	
 
 		return "controlpanel";
 	}
@@ -156,5 +190,48 @@ public class HomeController {
 		pw.flush();
 		pw.close();
 	}
+	
+	@RequestMapping("/ultrasonicsensor")
+	public void ultrasonicsensor(String command, String angle, HttpServletResponse response) throws IOException {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("command", command);
+		jsonObject.put("angle", angle);
+		String reqJson = jsonObject.toString();
+		CoapClient coapClient = new CoapClient();
+		coapClient.setURI("coap://192.168.3.42/ultrasonicsensor");
+		CoapResponse coapResponse = coapClient.post(reqJson, MediaTypeRegistry.APPLICATION_JSON);
+		String resJson = coapResponse.getResponseText();
+		coapClient.shutdown();
+
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		pw.write(resJson);
+		pw.flush();
+		pw.close();
+	}
+	
+	@RequestMapping("/lcd")
+	public void lcd(String command, String line0, String line1, HttpServletResponse response) throws IOException {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("command", command);
+		jsonObject.put("line0", line0);
+		jsonObject.put("line1", line1);
+		String reqJson = jsonObject.toString();
+		
+		CoapClient coapClient = new CoapClient();
+		coapClient.setURI("coap://192.168.3.42/lcd");
+		CoapResponse coapResponse = coapClient.post(reqJson, MediaTypeRegistry.APPLICATION_JSON);
+		String resJson = coapResponse.getResponseText();
+		coapClient.shutdown();
+		
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		pw.write(resJson);
+		pw.flush();
+		pw.close();
+	}		
+	
+	
+	
 
 }

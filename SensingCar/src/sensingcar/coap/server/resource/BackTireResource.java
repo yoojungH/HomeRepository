@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class BackTireResource extends CoapResource {
 	//Field
-	private static final Logger logger = LoggerFactory.getLogger(BackTireResource.class);	
+	private static final Logger logger = LoggerFactory.getLogger(BackTireResource.class);
 	private DCMotor dcMotorLeft;
 	private DCMotor dcMotorRight;
 	private PCA9685 pca9685;
@@ -61,21 +61,21 @@ public class BackTireResource extends CoapResource {
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
-		//{"command" : "change", "direction":"forward", "speed":"0"}
+		//{ "command":"change", "direction":"forward", "speed":"1000" }
 		//{ "command":"status" }
 		try {
 			String requestJson = exchange.getRequestText();
 			JSONObject requestJsonObject = new JSONObject(requestJson);
 			String command = requestJsonObject.getString("command");
 			if(command.equals("change")) {
-				String reqDirection = requestJsonObject.getString("direction");
-				int reqSpeed = Integer.parseInt(requestJsonObject.getString("speed"));
-				if(reqDirection.equals("forward")) {
+				String direction = requestJsonObject.getString("direction");
+				int speed = Integer.parseInt(requestJsonObject.getString("speed"));
+				if(direction.equals("forward")) {
 					forward();
-				} else if(reqDirection.equals("backward")) {
+				} else if(direction.equals("backward")) {
 					backward();
 				}
-				setSpeed(reqSpeed);
+				setSpeed(speed);
 			} else if(command.equals("status")) {
 			}
 			JSONObject responseJsonObject = new JSONObject();

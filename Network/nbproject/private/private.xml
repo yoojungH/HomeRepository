@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/IoTCourse/GitRepository/HomeRepository/Network/src/coap/exam01/server/CoapResource01.java</file>
+            <file>file:/D:/IoTCourse/GitRepository/HomeRepository/Network/src/http/exam01/HttpPostClient.java</file>
+            <file>file:/D:/IoTCourse/GitRepository/HomeRepository/Network/src/coap/exam01/client/CoapResource01Client.java</file>
+            <file>file:/D:/IoTCourse/GitRepository/HomeRepository/Network/src/http/exam01/HttpGetClient.java</file>
+            <file>file:/D:/IoTCourse/GitRepository/HomeRepository/Network/src/http/exam02/HttpMultipartClient.java</file>
+        </group>
     </open-files>
 </project-private>

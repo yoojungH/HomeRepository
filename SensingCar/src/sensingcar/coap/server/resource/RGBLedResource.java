@@ -10,19 +10,19 @@ import org.slf4j.LoggerFactory;
 
 public class RGBLedResource extends CoapResource {
 	//Field
-	private static final Logger logger = LoggerFactory.getLogger(RGBLedResource.class);	
+	private static final Logger logger = LoggerFactory.getLogger(RGBLedResource.class);
 	private RgbLedPWM rgbLed;
 	private int currRed;
 	private int currGreen;
 	private int currBlue;
-	
+					
 	//Constructor
 	public RGBLedResource() throws Exception {
 		super("rgbled");
 		rgbLed = new RgbLedPWM(RaspiPin.GPIO_04, RaspiPin.GPIO_05, RaspiPin.GPIO_06);
-		setColor(0,0,0);
+		setColor(0, 0, 0);
 	}
-
+	
 	//Method
 	private void setColor(int red, int green, int blue) {
 		rgbLed.ledColorSet(red, green, blue);
@@ -30,25 +30,25 @@ public class RGBLedResource extends CoapResource {
 		currGreen = green;
 		currBlue = blue;
 	}
+	
 	@Override
 	public void handleGET(CoapExchange exchange) {
-
 	}
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
-		//Json - { "command":"change", "red":"100", "green":"100", "blue":"100" }
-		//Json - { "command":"status" }
+		//{ "command":"change", "red":"100", "green":"100", "blue":"100" }
+		//{ "command":"status" }
 		try {
 			String requestJson = exchange.getRequestText();
 			JSONObject requestJsonObject = new JSONObject(requestJson);
 			String command = requestJsonObject.getString("command");
-			if (command.equals("change")) {
+			if(command.equals("change")) {
 				int red = Integer.parseInt(requestJsonObject.getString("red"));
 				int green = Integer.parseInt(requestJsonObject.getString("green"));
 				int blue = Integer.parseInt(requestJsonObject.getString("blue"));
 				setColor(red, green, blue);
-			} else if (command.equals("status")) {
+			} else if(command.equals("status")) {
 			}
 			JSONObject responseJsonObject = new JSONObject();
 			responseJsonObject.put("result", "success");
@@ -57,12 +57,12 @@ public class RGBLedResource extends CoapResource {
 			responseJsonObject.put("blue", String.valueOf(currBlue));
 			String responseJson = responseJsonObject.toString();
 			exchange.respond(responseJson);
-		} catch (Exception e) {
+		} catch(Exception e) {
 			logger.info(e.toString());
 			JSONObject responseJsonObject = new JSONObject();
 			responseJsonObject.put("result", "fail");
 			String responseJson = responseJsonObject.toString();
 			exchange.respond(responseJson);
-		}
+		}		
 	}
 }

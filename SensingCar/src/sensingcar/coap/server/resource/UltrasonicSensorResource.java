@@ -1,7 +1,6 @@
 package sensingcar.coap.server.resource;
 
 import com.pi4j.io.gpio.RaspiPin;
-import hardware.lcd.LCD1602;
 import hardware.motor.PCA9685;
 import hardware.motor.SG90ServoPCA9685Duration;
 import hardware.sensor.UltrasonicSensor;
@@ -17,7 +16,8 @@ public class UltrasonicSensorResource extends CoapResource {
 	private static final Logger logger = LoggerFactory.getLogger(UltrasonicSensorResource.class);
 	private PCA9685 pca9685;
 	private SG90ServoPCA9685Duration servoMotor;
-	private UltrasonicSensor ultrasonicSensor ;
+	private UltrasonicSensor ultrasonicSensor;
+	
 	private final int minAngle = 10;
 	private final int maxAngle = 170;
 	private int currAngle;
@@ -42,13 +42,14 @@ public class UltrasonicSensorResource extends CoapResource {
 				while(true) {
 					try {
 						currDistance = ultrasonicSensor.getDistance();
-						if(count == 2){
+						Thread.sleep(500);
+						if(count == 2) {
 							changed();
 							count = 0;
+						} else {
+							count++;
 						}
-						Thread.sleep(500);
-						count++;
-					}catch(Exception e) {
+					} catch(Exception e) {
 						logger.info(e.toString());
 					}
 				}
@@ -59,11 +60,10 @@ public class UltrasonicSensorResource extends CoapResource {
 	
 	//Method
 	private void setAngle(int angle) {
-		if(angle < minAngle ) angle = minAngle;
+		if(angle < minAngle) angle = minAngle;
 		if(angle > maxAngle) angle = maxAngle;
 		currAngle = angle;
 		servoMotor.setAngle(angle);
-		currDistance = ultrasonicSensor.getDistance();
 	}
 	
 	@Override
@@ -77,7 +77,7 @@ public class UltrasonicSensorResource extends CoapResource {
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
-		//{ "command":"change", "angle":"65"}
+		//{ "command":"change", "angle":"90" }
 		//{ "command":"status" }
 		try {
 			String requestJson = exchange.getRequestText();
@@ -86,13 +86,13 @@ public class UltrasonicSensorResource extends CoapResource {
 			if(command.equals("change")) {
 				int angle = Integer.parseInt(requestJsonObject.getString("angle"));
 				setAngle(angle);
-				try{ Thread.sleep(1000); } catch(Exception e) {}
+				try { Thread.sleep(1000); } catch(Exception e) {}	
 			} else if(command.equals("status")) {
 			}
 			JSONObject responseJsonObject = new JSONObject();
 			responseJsonObject.put("result", "success");
-			responseJsonObject.put("angle", currAngle);
-			responseJsonObject.put("distance", currDistance);
+			responseJsonObject.put("angle", String.valueOf(currAngle));
+			responseJsonObject.put("distance", String.valueOf(currDistance));
 			String responseJson = responseJsonObject.toString();
 			exchange.respond(responseJson);
 		} catch(Exception e) {

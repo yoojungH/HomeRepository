@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class BuzzerResource extends CoapResource {
 	//Field
-	private static final Logger logger = LoggerFactory.getLogger(BuzzerResource.class);	
+	private static final Logger logger = LoggerFactory.getLogger(BuzzerResource.class);
 	private ActiveBuzzer buzzer;
 	private String currStatus;
 	private static BuzzerResource instance;
@@ -22,10 +22,9 @@ public class BuzzerResource extends CoapResource {
 		buzzer = new ActiveBuzzer(RaspiPin.GPIO_24);
 		off();
 	}
-
+	
 	//Method
 	public static BuzzerResource getInstance() {
-		
 		return instance;
 	}
 	
@@ -45,29 +44,29 @@ public class BuzzerResource extends CoapResource {
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
-		//Json - { "command":"change", "status":"on" }
-		//Json - { "command":"status" }
+		//{ "command":"change", "status":"on" }
+		//{ "command":"status" }
 		try {
 			String requestJson = exchange.getRequestText();
 			JSONObject requestJsonObject = new JSONObject(requestJson);
 			String command = requestJsonObject.getString("command");
-			if (command.equals("change")) {
+			if(command.equals("change")) {
 				String status = requestJsonObject.getString("status");
 				if(status.equals("on")) on();
 				else if(status.equals("off")) off();
-			} else if (command.equals("status")) {
+			} else if(command.equals("status")) {
 			}
 			JSONObject responseJsonObject = new JSONObject();
 			responseJsonObject.put("result", "success");
 			responseJsonObject.put("status", currStatus);
 			String responseJson = responseJsonObject.toString();
 			exchange.respond(responseJson);
-		} catch (Exception e) {
+		} catch(Exception e) {
 			logger.info(e.toString());
 			JSONObject responseJsonObject = new JSONObject();
 			responseJsonObject.put("result", "fail");
 			String responseJson = responseJsonObject.toString();
 			exchange.respond(responseJson);
-		}
+		}		
 	}
 }

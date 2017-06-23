@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class LaserEmitterResource extends CoapResource {
 	//Field
-	private static final Logger logger = LoggerFactory.getLogger(LaserEmitterResource.class);	
+	private static final Logger logger = LoggerFactory.getLogger(LaserEmitterResource.class);
 	private LaserEmitter laserEmitter;
 	private String currStatus;
 	
@@ -21,7 +21,7 @@ public class LaserEmitterResource extends CoapResource {
 		laserEmitter = new LaserEmitter(RaspiPin.GPIO_25);
 		off();
 	}
-
+	
 	//Method
 	private void on() {
 		laserEmitter.shot();
@@ -39,29 +39,29 @@ public class LaserEmitterResource extends CoapResource {
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
-		//Json - { "command":"change", "status":"on" }
-		//Json - { "command":"status" }
+		//{ "command":"change", "status":"on" }
+		//{ "command":"status" }
 		try {
 			String requestJson = exchange.getRequestText();
 			JSONObject requestJsonObject = new JSONObject(requestJson);
 			String command = requestJsonObject.getString("command");
-			if (command.equals("change")) {
+			if(command.equals("change")) {
 				String status = requestJsonObject.getString("status");
 				if(status.equals("on")) on();
 				else if(status.equals("off")) off();
-			} else if (command.equals("status")) {
+			} else if(command.equals("status")) {
 			}
 			JSONObject responseJsonObject = new JSONObject();
 			responseJsonObject.put("result", "success");
 			responseJsonObject.put("status", currStatus);
 			String responseJson = responseJsonObject.toString();
 			exchange.respond(responseJson);
-		} catch (Exception e) {
+		} catch(Exception e) {
 			logger.info(e.toString());
 			JSONObject responseJsonObject = new JSONObject();
 			responseJsonObject.put("result", "fail");
 			String responseJson = responseJsonObject.toString();
 			exchange.respond(responseJson);
-		}
+		}		
 	}
 }

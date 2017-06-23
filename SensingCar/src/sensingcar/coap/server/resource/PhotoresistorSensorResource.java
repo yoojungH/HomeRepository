@@ -11,13 +11,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class PhotoresistorSensorResource extends CoapResource {
-
 	//Field
 	private static final Logger logger = LoggerFactory.getLogger(PhotoresistorSensorResource.class);
 	private PCF8591 pcf8591;
 	private PhotoresistorSensor photoresistorSensor;
 	private double currValue;
-
+	
 	//Constructor
 	public PhotoresistorSensorResource() throws Exception {
 		super("photoresistor");
@@ -31,13 +30,12 @@ public class PhotoresistorSensorResource extends CoapResource {
 		Thread thread = new Thread() {
 			@Override
 			public void run() {
-				
-				while (true) {
+				while(true) {
 					try {
 						currValue = photoresistorSensor.getValue();
 						changed();
 						Thread.sleep(1000);
-					} catch (Exception e) {
+					} catch(Exception e) {
 						logger.info(e.toString());
 					}
 				}
@@ -45,7 +43,7 @@ public class PhotoresistorSensorResource extends CoapResource {
 		};
 		thread.start();
 	}
-
+	
 	//Method
 	@Override
 	public void handleGET(CoapExchange exchange) {
@@ -54,7 +52,7 @@ public class PhotoresistorSensorResource extends CoapResource {
 		String responseJson = responseJsonObject.toString();
 		exchange.respond(responseJson);
 	}
-	
+
 	@Override
 	public void handlePOST(CoapExchange exchange) {
 		//{ "command":"status" }
@@ -62,15 +60,14 @@ public class PhotoresistorSensorResource extends CoapResource {
 			String requestJson = exchange.getRequestText();
 			JSONObject requestJsonObject = new JSONObject(requestJson);
 			String command = requestJsonObject.getString("command");
-			if(command.equals("status")){
-				
+			if(command.equals("status")) {
 			}
 			JSONObject responseJsonObject = new JSONObject();
 			responseJsonObject.put("result", "success");
 			responseJsonObject.put("photoresistor", String.valueOf(currValue));
 			String responseJson = responseJsonObject.toString();
 			exchange.respond(responseJson);
-		} catch (Exception e) {
+		} catch(Exception e) {
 			logger.info(e.toString());
 			JSONObject responseJsonObject = new JSONObject();
 			responseJsonObject.put("result", "fail");
