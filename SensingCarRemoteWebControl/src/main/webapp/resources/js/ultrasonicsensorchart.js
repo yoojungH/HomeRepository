@@ -8,7 +8,7 @@ $(function() {
 				load: requestUltrasonicSensorData
 			}
 		},
-		colors: ['red'],
+		colors: ['orange'],
 		title: {
 			text: "UltrasonicSensor(거리센서)"
 		},

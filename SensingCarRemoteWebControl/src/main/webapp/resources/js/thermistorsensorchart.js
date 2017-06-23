@@ -8,7 +8,7 @@ $(function() {
 				load: requestThermistorSensorData
 			}
 		},
-		colors: ['cyan'],
+		colors: ['DarkTurquoise'],
 		title: {
 			text: "ThermistorSensor(온도센서)"
 		},
