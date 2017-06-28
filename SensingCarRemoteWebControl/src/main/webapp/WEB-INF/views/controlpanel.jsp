@@ -17,7 +17,43 @@
 <script
 	src="<%=application.getContextPath()%>/resources/highcharts/code/highcharts.js"></script>
 <script
+	src="<%=application.getContextPath()%>/resources/highcharts/code/highcharts-more.js"></script>
+<script
 	src="<%=application.getContextPath()%>/resources/highcharts/code/themes/gray.js"></script>
+
+<script
+	src="<%=application.getContextPath()%>/resources/highcharts/code/modules/solid-gauge.js"></script>
+
+<script src="<%=application.getContextPath()%>/resources/highcharts/code/modules/exporting.js"></script>
+
+
+<div style="width: 600px; height: 400px; margin: 0 auto">
+	<div id="container-speed"
+		style="width: 300px; height: 200px; float: left"></div>
+</div>
+
+<div class="text">
+	<span>l</span>
+	<span>i</span>
+	<span>g</span>
+	<span>h</span>
+	<span>t</span>
+</div>
+
+<!-- 
+<div class="frame">
+	<svg width="76px" height="94px" viewBox="0 0 76 94" id="bulb" onclick="void(0);">
+		<path d="M76,37.037 C76,59.939 55.6428571,75.427 55.6428571,93.5 L20.3571429,93.5 C20.3571429,75.427 0,59.9335 0,37.037 C0,13.1505 18.9891429,0 37.9782857,0 C56.9891429,0 76,13.167 76,37.037 L76,37.037 Z"></path>
+	</svg>
+	<div id="glow"></div>
+	<svg width="32px" height="33px" viewBox="0 0 32 33" id="base">
+		<path d="M29.3333333,0 L2.66666667,0 C1.19466667,0 0,1.232 0,2.75 C0,4.268 1.19466667,5.5 2.66666667,5.5 L29.3333333,5.5 C30.8053333,5.5 32,4.268 32,2.75 C32,1.232 30.8053333,0 29.3333333,0 L29.3333333,0 Z M29.3333333,11 L2.66666667,11 C1.19466667,11 0,12.232 0,13.75 C0,15.268 1.19466667,16.5 2.66666667,16.5 L29.3333333,16.5 C30.8053333,16.5 32,15.268 32,13.75 C32,12.232 30.8053333,11 29.3333333,11 L29.3333333,11 Z M30.6666667,22 L1.33333333,22 L9.072,31.1245 C10.0853333,32.3125 11.552,33 13.088,33 L18.9173333,33 C20.4533333,33 21.9146667,32.3125 22.928,31.1245 L30.6666667,22 L30.6666667,22 Z"></path>
+	</svg>
+</div>
+ -->
+
+<link href="<%=application.getContextPath()%>/resources/css/text.css" rel="stylesheet" type="text/css"></link>
+<link href="<%=application.getContextPath()%>/resources/css/bulb.css" rel="stylesheet" type="text/css"></link>
 <style>
 @media screen and (min-width: 480px) {
 	#title {
@@ -25,24 +61,38 @@
 	}
 }
 </style>
-	<script src="<%=application.getContextPath()%>/resources/js/camera.js"></script>
-	<script src="<%=application.getContextPath()%>/resources/js/rgbled.js"></script>
-	<script src="<%=application.getContextPath()%>/resources/js/laseremitter.js"></script>
-	<script src="<%=application.getContextPath()%>/resources/js/buzzer.js"></script>
-	<script src="<%=application.getContextPath()%>/resources/js/ultrasonicsensor.js"></script>
-	<script src="<%=application.getContextPath()%>/resources/js/lcd.js"></script>
-	<script src="<%=application.getContextPath()%>/resources/js/fronttire.js"></script>
-	<script src="<%=application.getContextPath()%>/resources/js/backtire.js"></script>
-	
-	
-	<script src="<%=application.getContextPath()%>/resources/js/thermistorsensorchart.js"></script>
-	<script src="<%=application.getContextPath()%>/resources/js/ultrasonicsensorchart.js"></script>
-	<script src="<%=application.getContextPath()%>/resources/js/trackingsensorchart.js"></script>
-	<script src="<%=application.getContextPath()%>/resources/js/photoresistorsensorchart.js"></script>
-	<script src="<%=application.getContextPath()%>/resources/js/gassensorchart.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/camera.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/rgbled.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/laseremitter.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/buzzer.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/ultrasonicsensor.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/lcd.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/fronttire.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/backtire.js"></script>
+
+
+<script
+	src="<%=application.getContextPath()%>/resources/js/thermistorsensorchart.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/ultrasonicsensorchart.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/trackingsensorchart.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/photoresistorsensorchart.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/gassensorchart.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/gaugechart.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/getRandomColor.js"></script>
+
 </head>
 
-<body style="background-color: black;">
+
+<body style="background-color: transparent;">
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-8">
@@ -206,6 +256,7 @@
 									${lcdline1}</span>
 							</div>
 							<br />
+
 							<div style="padding-left: 20px;">
 								<table style="width: 100%">
 									<tr>
@@ -223,11 +274,11 @@
 									</tr>
 								</table>
 							</div>
-							
+
 						</div>
 					</div>
-					
-			
+
+
 					<div class="col-lg-3">
 						<div
 							style="background: linear-gradient(#737373, black); color: white; height: 150px; background-color: lightgray; padding: 5px; margin-top: 20px;">
@@ -248,47 +299,90 @@
 							</div>
 						</div>
 					</div>
+
+
+
+
+
+
+
 					<div class="col-lg-5">
 						<div
 							style="background: linear-gradient(#737373, black); color: white; height: 150px; background-color: lightgray; padding: 5px; margin-top: 20px;">
+
 							<div
 								style="text-align: center; font-size: 18px; font-style: italic; font-weight: bold;">BackTire
 								장치 제어</div>
 							<div style="text-align: center">
-								현재 상태: <span id="backtireStatus"><br />direction: ${direction}<br />speed:
-									${speed}</span>
+								현재 상태: <span id="backtireStatus"><br />direction:
+									${direction}<br />speed: ${inputspeed}</span>
 							</div>
+
+							<!-- 츄가 -->
+							<div style="padding-left: 20px;">
+								<table style="width: 100%">
+									<tr>
+										<td style="width: 70%">InputSpeed: <input id="inputspeed"
+											type="text" maxlength="16" value="${inputspeed}"
+											style="color: black; width: 120px;" />
+										</td>
+										<td style="width: 30%">
+											<button id="btnSpeed" type="button"
+												onclick="backtire('change',  '${direction}', '0')"
+												class="btn btn-primary">보내기</button>
+
+										</td>
+									</tr>
+								</table>
+							</div>
+
+
 							<br />
 							<div style="text-align: center;">
 								<button id="btnForward" type="button" class="btn btn-warning"
 									onclick="backtire('change', 'forward','${speed}')"
 									style="margin-bottom: 5px;">전진</button>
 								<button id="btnBackward" type="button" class="btn btn-info"
-									onclick="backtire('change', 'backward','${speed}')"
+									onclick="backtire('change', 'backward',''${speed}')"
 									style="margin-bottom: 5px;">후진</button>
 								<br />
-								<button id="btnSpeed0" onclick="backtire('change',  '${direction}', '0')"
+
+								<!-- 
+								<button id="btnSpeed0"
+									onclick="backtire('change',  '${direction}', '0')"
 									style="color: black;">0</button>
-								<button id="btnSpeed1" onclick="backtire('change','${direction}', '500')"
+								<button id="btnSpeed1"
+									onclick="backtire('change','${direction}', '500')"
 									style="color: black;">1</button>
-								<button id="btnSpeed2" onclick="backtire('change','${direction}', '900')"
+								<button id="btnSpeed2"
+									onclick="backtire('change','${direction}', '900')"
 									style="color: black;">2</button>
-								<button id="btnSpeed3" onclick="backtire('change','${direction}', '1300')"
+								<button id="btnSpeed3"
+									onclick="backtire('change','${direction}', '1300')"
 									style="color: black;">3</button>
-								<button id="btnSpeed4" onclick="backtire('change', '${direction}','1700')"
+								<button id="btnSpeed4"
+									onclick="backtire('change', '${direction}','1700')"
 									style="color: black;">4</button>
-								<button id="btnSpeed5" onclick="backtire('change', '${direction}','2000')"
+								<button id="btnSpeed5"
+									onclick="backtire('change', '${direction}','2000')"
 									style="color: black;">5</button>
-								<button id="btnSpeed6" onclick="backtire('change','${direction}', '2400')"
+								<button id="btnSpeed6"
+									onclick="backtire('change','${direction}', '2400')"
 									style="color: black;">6</button>
-								<button id="btnSpeed7" onclick="backtire('change', '${direction}','2800')"
+								<button id="btnSpeed7"
+									onclick="backtire('change', '${direction}','2800')"
 									style="color: black;">7</button>
-								<button id="btnSpeed8" onclick="backtire('change', '${direction}','3200')"
+								<button id="btnSpeed8"
+									onclick="backtire('change', '${direction}','3200')"
 									style="color: black;">8</button>
-								<button id="btnSpeed9" onclick="backtire('change', '${direction}', '3600')"
+								<button id="btnSpeed9"
+									onclick="backtire('change', '${direction}', '3600')"
 									style="color: black;">9</button>
-								<button id="btnSpeed10" onclick="backtire('change', '${direction}','4000')"
+								<button id="btnSpeed10"
+									onclick="backtire('change', '${direction}','4000')"
 									style="color: black;">10</button>
+									
+									 -->
 							</div>
 						</div>
 					</div>
@@ -304,6 +398,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="col-lg-4">
 				<div>
 					<div class="row">
@@ -318,14 +413,18 @@
 								style="height: 270px; margin-top: 15px; border: 1px solid white;"></div>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="col-lg-12">
 							<div id="gasSensorChartContainer"
 								style="height: 270px; margin-top: 15px; border: 1px solid white;"></div>
 						</div>
 					</div>
+
+
 				</div>
 			</div>
+
 		</div>
 	</div>
 </body>
