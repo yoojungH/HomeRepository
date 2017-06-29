@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WebApplication</title>
@@ -18,6 +23,10 @@
 	src="<%=application.getContextPath()%>/resources/highcharts/code/highcharts.js"></script>
 <script
 	src="<%=application.getContextPath()%>/resources/highcharts/code/themes/gray.js"></script>
+	
+	<script src="<%=application.getContextPath()%>/resources/highcharts/code/highcharts-more.js"></script>
+    <script src="<%=application.getContextPath()%>/resources/highcharts/modules/exporting.js"></script>
+
 
 
 <style>
@@ -39,8 +48,12 @@
 	src="<%=application.getContextPath()%>/resources/js/fronttire.js"></script>
 <script src="<%=application.getContextPath()%>/resources/js/backtire.js"></script>
 
-<script
-	src="<%=application.getContextPath()%>/resources/js/photoresistorsensorvalue.js"></script>
+<!-- js 추가 -->
+
+
+
+<script src="<%=application.getContextPath()%>/resources/js/photoresistorsensorvalue.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/gauge.js"></script>
 
 
 
@@ -56,13 +69,32 @@
 	src="<%=application.getContextPath()%>/resources/js/gassensorchart.js"></script>
 </head>
 
+<!-- css 추가 -->
 <link href="<%=application.getContextPath()%>/resources/css/bulb.css"
 	rel="stylesheet" type="text/css"></link>
 
+<link href="<%=application.getContextPath()%>/resources/css/gauge.css"
+	rel="stylesheet" type="text/css"></link>
 
-<body style="background-color: black;">
+
+<body style="background-color: white;">
 
 
+	<!-- 게이지 바디 추가 -->
+	<div class="container A">
+		<svg class="typeRange" height="165" width="330" view-box="0 0 330 165">
+
+    <g class="scale" stroke="red"></g>
+
+    <path class="outline" d="" />
+    <path class="fill" d="" />
+    <polygon class="needle" points="220,10 300,210 220,250 140,210" />
+  </svg>
+		<div class="output">30</div>
+	</div>
+
+	<p>Input Speed :</p>
+	<input type="text" class="initialValue" value="18" />
 
 
 	<div class="container-fluid">
@@ -136,6 +168,10 @@
 
 				<div class="row">
 					<div class="col-lg-3">
+
+
+
+
 						<div
 							style="background: linear-gradient(#737373, black); color: white; height: 150px; background-color: lightgray; padding: 5px; margin-top: 20px;">
 							<div
@@ -363,6 +399,12 @@
 					</div>
 				</div>
 			</div>
+
+
+
+
+
+
 			<div class="col-lg-4">
 				<div>
 					<div class="row">
@@ -404,10 +446,11 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
+
+
 	</div>
-
-
 
 
 
