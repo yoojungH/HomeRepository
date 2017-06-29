@@ -17,43 +17,9 @@
 <script
 	src="<%=application.getContextPath()%>/resources/highcharts/code/highcharts.js"></script>
 <script
-	src="<%=application.getContextPath()%>/resources/highcharts/code/highcharts-more.js"></script>
-<script
 	src="<%=application.getContextPath()%>/resources/highcharts/code/themes/gray.js"></script>
 
-<script
-	src="<%=application.getContextPath()%>/resources/highcharts/code/modules/solid-gauge.js"></script>
 
-<script src="<%=application.getContextPath()%>/resources/highcharts/code/modules/exporting.js"></script>
-
-
-<div style="width: 600px; height: 400px; margin: 0 auto">
-	<div id="container-speed"
-		style="width: 300px; height: 200px; float: left"></div>
-</div>
-
-<div class="text">
-	<span>l</span>
-	<span>i</span>
-	<span>g</span>
-	<span>h</span>
-	<span>t</span>
-</div>
-
-<!-- 
-<div class="frame">
-	<svg width="76px" height="94px" viewBox="0 0 76 94" id="bulb" onclick="void(0);">
-		<path d="M76,37.037 C76,59.939 55.6428571,75.427 55.6428571,93.5 L20.3571429,93.5 C20.3571429,75.427 0,59.9335 0,37.037 C0,13.1505 18.9891429,0 37.9782857,0 C56.9891429,0 76,13.167 76,37.037 L76,37.037 Z"></path>
-	</svg>
-	<div id="glow"></div>
-	<svg width="32px" height="33px" viewBox="0 0 32 33" id="base">
-		<path d="M29.3333333,0 L2.66666667,0 C1.19466667,0 0,1.232 0,2.75 C0,4.268 1.19466667,5.5 2.66666667,5.5 L29.3333333,5.5 C30.8053333,5.5 32,4.268 32,2.75 C32,1.232 30.8053333,0 29.3333333,0 L29.3333333,0 Z M29.3333333,11 L2.66666667,11 C1.19466667,11 0,12.232 0,13.75 C0,15.268 1.19466667,16.5 2.66666667,16.5 L29.3333333,16.5 C30.8053333,16.5 32,15.268 32,13.75 C32,12.232 30.8053333,11 29.3333333,11 L29.3333333,11 Z M30.6666667,22 L1.33333333,22 L9.072,31.1245 C10.0853333,32.3125 11.552,33 13.088,33 L18.9173333,33 C20.4533333,33 21.9146667,32.3125 22.928,31.1245 L30.6666667,22 L30.6666667,22 Z"></path>
-	</svg>
-</div>
- -->
-
-<link href="<%=application.getContextPath()%>/resources/css/text.css" rel="stylesheet" type="text/css"></link>
-<link href="<%=application.getContextPath()%>/resources/css/bulb.css" rel="stylesheet" type="text/css"></link>
 <style>
 @media screen and (min-width: 480px) {
 	#title {
@@ -73,6 +39,10 @@
 	src="<%=application.getContextPath()%>/resources/js/fronttire.js"></script>
 <script src="<%=application.getContextPath()%>/resources/js/backtire.js"></script>
 
+<script
+	src="<%=application.getContextPath()%>/resources/js/photoresistorsensorvalue.js"></script>
+
+
 
 <script
 	src="<%=application.getContextPath()%>/resources/js/thermistorsensorchart.js"></script>
@@ -84,14 +54,15 @@
 	src="<%=application.getContextPath()%>/resources/js/photoresistorsensorchart.js"></script>
 <script
 	src="<%=application.getContextPath()%>/resources/js/gassensorchart.js"></script>
-<script
-	src="<%=application.getContextPath()%>/resources/js/gaugechart.js"></script>
-<script src="<%=application.getContextPath()%>/resources/js/getRandomColor.js"></script>
-
 </head>
 
+<link href="<%=application.getContextPath()%>/resources/css/bulb.css" rel="stylesheet" type="text/css"></link>
 
-<body style="background-color: transparent;">
+
+<body style="background-color: black;">
+
+
+
 
 	<div class="container-fluid">
 		<div class="row">
@@ -256,7 +227,6 @@
 									${lcdline1}</span>
 							</div>
 							<br />
-
 							<div style="padding-left: 20px;">
 								<table style="width: 100%">
 									<tr>
@@ -299,12 +269,6 @@
 							</div>
 						</div>
 					</div>
-
-
-
-
-
-
 
 					<div class="col-lg-5">
 						<div
@@ -398,7 +362,6 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="col-lg-4">
 				<div>
 					<div class="row">
@@ -409,23 +372,44 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-12">
+							<div id="divPhoto" class="text">
+								<span>light</span>
+							</div>
 							<div id="photoresistorSensorChartContainer"
 								style="height: 270px; margin-top: 15px; border: 1px solid white;"></div>
 						</div>
 					</div>
-
 					<div class="row">
 						<div class="col-lg-12">
 							<div id="gasSensorChartContainer"
 								style="height: 270px; margin-top: 15px; border: 1px solid white;"></div>
 						</div>
 					</div>
-
-
 				</div>
 			</div>
-
 		</div>
 	</div>
+
+
+	<div class='wrapper'>
+		<div class='lightbulb'>
+			<div class='head'>
+				<div class='wire'></div>
+			</div>
+			<div class='body'>
+				<div class='el'>
+					<div class='el__one'></div>
+					<div class='el__two'></div>
+					<div class='el__three'></div>
+					<div class='el__four'></div>
+					<div class='el__five'></div>
+					<div class='el__six'></div>
+				</div>
+			</div>
+		</div>
+		<div class='text'>#Photoresistor</div>
+	</div>
+
+
 </body>
 </html>

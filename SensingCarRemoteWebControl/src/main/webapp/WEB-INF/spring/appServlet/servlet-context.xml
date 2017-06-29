@@ -40,7 +40,6 @@
 		<websocket:mapping handler="trackingSensorHandler" path="/websocket/tracking"/>
 		<websocket:mapping handler="photoresistorSensorHandler" path="/websocket/photoresistor"/>
 		<websocket:mapping handler="gasSensorHandler" path="/websocket/gassensor"/>
-
 	</websocket:handlers>
 	
 </beans:beans>

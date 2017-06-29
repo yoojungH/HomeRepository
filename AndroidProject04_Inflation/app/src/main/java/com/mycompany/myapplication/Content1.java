@@ -30,6 +30,7 @@ public class Content1 extends LinearLayout {
         View view = inflater.inflate(R.layout.content1_item, null);
 
 
+        //데이터를 찾아서 넣어줌 -> 바인딩
         ImageView photo = (ImageView) view.findViewById(R.id.photo);
         photo.setImageResource(item.getPhoto());
 

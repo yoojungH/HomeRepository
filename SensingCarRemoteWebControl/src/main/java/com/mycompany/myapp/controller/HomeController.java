@@ -111,7 +111,6 @@ public class HomeController {
 		coapClient.setURI("coap://192.168.3.42/backtire");
 		coapResponse = coapClient.post(json, MediaTypeRegistry.APPLICATION_JSON);
 		json = coapResponse.getResponseText();
-		
 		jsonObject = new JSONObject(json);
 		model.addAttribute("direction", jsonObject.getString("direction"));	
 		model.addAttribute("speed", jsonObject.getString("speed"));
