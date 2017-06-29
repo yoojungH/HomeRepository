@@ -56,7 +56,8 @@
 	src="<%=application.getContextPath()%>/resources/js/gassensorchart.js"></script>
 </head>
 
-<link href="<%=application.getContextPath()%>/resources/css/bulb.css" rel="stylesheet" type="text/css"></link>
+<link href="<%=application.getContextPath()%>/resources/css/bulb.css"
+	rel="stylesheet" type="text/css"></link>
 
 
 <body style="background-color: black;">
@@ -372,11 +373,27 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-12">
-							<div id="divPhoto" class="text">
-								<span>light</span>
-							</div>
+							<div id="divPhoto" class="text">★★★★</div>
 							<div id="photoresistorSensorChartContainer"
 								style="height: 270px; margin-top: 15px; border: 1px solid white;"></div>
+						</div>
+						<div class='wrapper'>
+							<div class='lightbulb'>
+								<div class='head'>
+									<div class='wire'></div>
+								</div>
+								<div class='body'>
+									<div class='el'>
+										<div class='el__one'></div>
+										<div class='el__two'></div>
+										<div class='el__three'></div>
+										<div class='el__four'></div>
+										<div class='el__five'></div>
+										<div class='el__six'></div>
+									</div>
+								</div>
+							</div>
+							<div class='text'>#Photoresistor</div>
 						</div>
 					</div>
 					<div class="row">
@@ -391,24 +408,7 @@
 	</div>
 
 
-	<div class='wrapper'>
-		<div class='lightbulb'>
-			<div class='head'>
-				<div class='wire'></div>
-			</div>
-			<div class='body'>
-				<div class='el'>
-					<div class='el__one'></div>
-					<div class='el__two'></div>
-					<div class='el__three'></div>
-					<div class='el__four'></div>
-					<div class='el__five'></div>
-					<div class='el__six'></div>
-				</div>
-			</div>
-		</div>
-		<div class='text'>#Photoresistor</div>
-	</div>
+
 
 
 </body>

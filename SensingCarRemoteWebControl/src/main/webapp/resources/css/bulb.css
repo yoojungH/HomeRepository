@@ -20,6 +20,7 @@ html, body {
 .wrapper .lightbulb {
   height: 300px;
   position: relative;
+   
 }
 .wrapper .lightbulb .head {
   height: 200px;
@@ -34,6 +35,8 @@ html, body {
   background: #FFC524;
   perspective: 150px;
   perspective-origin: 100px 600px;
+  opacity: 1;
+ 
 }
 .wrapper .lightbulb .head::after {
   content: "";
@@ -47,6 +50,7 @@ html, body {
   background: #FFC524;
   transform: rotateX(25deg);
   z-index: 4;
+  
 }
 .wrapper .lightbulb .head::before {
   content: "";
@@ -115,6 +119,7 @@ html, body {
   bottom: 10px;
   background: #FFC524;
   z-index: 6;
+  opacity: 1;
 }
 .wrapper .lightbulb .body .el__two {
   height: 40px;

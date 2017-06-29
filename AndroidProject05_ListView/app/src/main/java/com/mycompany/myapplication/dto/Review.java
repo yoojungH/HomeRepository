@@ -1,6 +1,6 @@
-package com.mycompany.myapplication;
+package com.mycompany.myapplication.dto;
 
-public class Item1 {
+public class Review {
     private int photo;
     private String title;
     private int star;
@@ -10,28 +10,28 @@ public class Item1 {
         return photo;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public int getStar() {
-        return star;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
     public void setPhoto(int photo) {
         this.photo = photo;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
+    public int getStar() {
+        return star;
+    }
+
     public void setStar(int star) {
         this.star = star;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     public void setContent(String content) {
