@@ -1,9 +1,11 @@
 package com.mycompany.myapplication.content;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FoodList extends LinearLayout {
+    private static final String TAG = ReviewList.class.getSimpleName();
     private ListView listView;
     private List<Food> list = new ArrayList<>();
     private ItemAdapter itemAdapter;
@@ -29,7 +32,20 @@ public class FoodList extends LinearLayout {
         itemAdapter = new ItemAdapter();
         listView.setAdapter(itemAdapter);
         addView(listView);
+
+        listView.setOnItemClickListener(itemClickListener);
     }
+
+    private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            //Review review = list.get(position);
+           Food food = (Food) itemAdapter.getItem(position);
+            Log.i(TAG, food.getFname());
+            Log.i(TAG, food.getFdesc());
+
+        }
+    };
 
     class ItemAdapter extends BaseAdapter {
         @Override

@@ -1,9 +1,11 @@
 package com.mycompany.myapplication.content;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewList extends LinearLayout {
+    private static final String TAG = ReviewList.class.getSimpleName(); //"ReviewList"
     private ListView listView;
     private List<Review> list = new ArrayList<>();
     private ItemAdapter itemAdapter;
@@ -30,7 +33,21 @@ public class ReviewList extends LinearLayout {
         listView.setAdapter(itemAdapter);
         //ListView를 내용으로 추가
         addView(listView);
+
+        //ListView 이벤트 처리
+        listView.setOnItemClickListener(itemClickListener);
     }
+
+    private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            //Review review = list.get(position);
+            Review review = (Review) itemAdapter.getItem(position);
+            Log.i(TAG, review.getTitle());
+            Log.i(TAG, review.getContent());
+
+        }
+    };
 
     class ItemAdapter extends BaseAdapter {
         @Override
