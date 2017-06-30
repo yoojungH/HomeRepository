@@ -1,9 +1,9 @@
+
 html, body {
   height: 100%;
   width: 100%;
   position: absolute;
   margin: 0;
-  background: #AC3F39 fixed;
 }
 
 .wrapper {
@@ -18,13 +18,12 @@ html, body {
   filter: drop-shadow(0 0 54px #FFC524);
 }
 .wrapper .lightbulb {
-  height: 300px;
+  height: 150px;
   position: relative;
-   
 }
 .wrapper .lightbulb .head {
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
   position: absolute;
   top: 0;
   left: 0;
@@ -33,42 +32,39 @@ html, body {
   margin: auto;
   border-radius: 100%;
   background: #FFC524;
-  perspective: 150px;
-  perspective-origin: 100px 600px;
-  opacity: 1;
- 
+  perspective: 75px;
+  perspective-origin: 50px 300px;
 }
 .wrapper .lightbulb .head::after {
   content: "";
-  height: 100px;
-  width: 133.33333px;
+  height: 50px;
+  width: 62px;
   position: absolute;
-  bottom: -28.57143px;
+  bottom: -14px;
   left: 0;
   right: 0;
   margin: auto;
   background: #FFC524;
   transform: rotateX(25deg);
   z-index: 4;
-  
 }
 .wrapper .lightbulb .head::before {
   content: "";
-  height: 100px;
-  width: 114.28571px;
+  height: 50px;
+  width: 57px;
   position: absolute;
-  bottom: -50px;
+  bottom: -25px;
   left: 0;
   right: 0;
   margin: auto;
   background: #FFC524;
   transform: rotateX(45deg);
-  border-radius: 32px;
+  border-radius: 16px;
   z-index: 4;
 }
 .wrapper .lightbulb .head .wire {
-  height: 10px;
-  width: 66.66667px;
+  height: 5px;
+  width: 33px;
   position: absolute;
   top: 50%;
   left: 0;
@@ -79,18 +75,18 @@ html, body {
 }
 .wrapper .lightbulb .head .wire::before, .wrapper .lightbulb .head .wire::after {
   content: "";
-  height: 150px;
-  width: 10px;
+  height: 75px;
+  width: 5px;
   position: absolute;
-  top: 10px;
+  top: 5px;
   border-radius: 50%;
   z-index: 12;
 }
 .wrapper .lightbulb .head .wire::before {
-  border-right: 2px #333 solid;
+  border-right: 1px #333 solid;
 }
 .wrapper .lightbulb .head .wire::after {
-  border-left: 2px #333 solid;
+  border-left: 1px #333 solid;
   right: 0;
 }
 .wrapper .lightbulb .body {
@@ -111,57 +107,52 @@ html, body {
   margin: auto;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
-  border-bottom: 2px #333 solid;
+  border-bottom: 1px #333 solid;
 }
+
+
+
+
+
+
 .wrapper .lightbulb .body .el__one {
-  height: 40px;
-  width: 108px;
-  bottom: 10px;
+  height: 20px;
+  width: 54px;
+  bottom: 5px;
   background: #FFC524;
   z-index: 6;
-  opacity: 1;
 }
 .wrapper .lightbulb .body .el__two {
-  height: 40px;
-  width: 108px;
+  height: 20px;
+  width: 54px;
   bottom: 0;
   background: #BBBBBB;
   z-index: 5;
 }
 .wrapper .lightbulb .body .el__three {
-  height: 40px;
-  width: 106px;
-  bottom: -10px;
+  height: 20px;
+  width: 53px;
+  bottom: -5px;
   background: #BBBBBB;
   z-index: 4;
 }
 .wrapper .lightbulb .body .el__four {
-  height: 40px;
-  width: 104px;
-  bottom: -20px;
+  height: 20px;
+  width: 54px;
+  bottom: -10px;
   background: #BBBBBB;
   z-index: 3;
 }
 .wrapper .lightbulb .body .el__five {
-  height: 40px;
-  width: 102px;
-  bottom: -30px;
+  height: 20px;
+  width: 51px;
+  bottom: -15px;
   background: #BBBBBB;
   z-index: 2;
 }
 .wrapper .lightbulb .body .el__six {
-  height: 40px;
-  width: 80px;
-  bottom: -40px;
+  height: 20px;
+  width: 40px;
+  bottom: -20px;
   background: #a2a2a2;
-}
-.wrapper .text {
-  position: absolute;
-  top: 360px;
-  right: 0;
-  bottom: auto;
-  left: 0;
-  font-size: 48px;
-  text-align: center;
-  font-family: "Bad Script";
 }

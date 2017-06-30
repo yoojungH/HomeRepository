@@ -19,13 +19,10 @@
 <script
 	src="<%=application.getContextPath()%>/resources/bootstrap-3.3.7/js/bootstrap.min.js"
 	type="text/javascript"></script>
-<script
-	src="<%=application.getContextPath()%>/resources/highcharts/code/highcharts.js"></script>
-<script
-	src="<%=application.getContextPath()%>/resources/highcharts/code/themes/gray.js"></script>
-	
-	<script src="<%=application.getContextPath()%>/resources/highcharts/code/highcharts-more.js"></script>
-    <script src="<%=application.getContextPath()%>/resources/highcharts/modules/exporting.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 
 
@@ -52,7 +49,8 @@
 
 
 
-<script src="<%=application.getContextPath()%>/resources/js/photoresistorsensorvalue.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/photoresistorsensorvalue.js"></script>
 <script src="<%=application.getContextPath()%>/resources/js/gauge.js"></script>
 
 
@@ -73,14 +71,18 @@
 <link href="<%=application.getContextPath()%>/resources/css/bulb.css"
 	rel="stylesheet" type="text/css"></link>
 
+<!-- 
 <link href="<%=application.getContextPath()%>/resources/css/gauge.css"
 	rel="stylesheet" type="text/css"></link>
-
+-->
 
 <body style="background-color: white;">
 
 
 	<!-- 게이지 바디 추가 -->
+	<div id="container"
+		style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+	<!-- 
 	<div class="container A">
 		<svg class="typeRange" height="165" width="330" view-box="0 0 330 165">
 
@@ -95,7 +97,7 @@
 
 	<p>Input Speed :</p>
 	<input type="text" class="initialValue" value="18" />
-
+-->
 
 	<div class="container-fluid">
 		<div class="row">
@@ -419,7 +421,9 @@
 							<div id="photoresistorSensorChartContainer"
 								style="height: 270px; margin-top: 15px; border: 1px solid white;"></div>
 						</div>
-						<div class='wrapper'>
+
+		
+						<div class='wrapper' style="height: 100px; width:200px"   >
 							<div class='lightbulb'>
 								<div class='head'>
 									<div class='wire'></div>
@@ -429,14 +433,15 @@
 										<div class='el__one'></div>
 										<div class='el__two'></div>
 										<div class='el__three'></div>
-										<div class='el__four'></div>
 										<div class='el__five'></div>
 										<div class='el__six'></div>
 									</div>
 								</div>
 							</div>
 							<div class='text'>#Photoresistor</div>
-						</div>
+					</div>
+			
+						
 					</div>
 					<div class="row">
 						<div class="col-lg-12">
