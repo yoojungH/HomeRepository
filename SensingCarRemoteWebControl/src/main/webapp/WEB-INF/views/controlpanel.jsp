@@ -46,11 +46,7 @@
 <script src="<%=application.getContextPath()%>/resources/js/backtire.js"></script>
 
 <!-- js 추가 -->
-
-
-
-<script
-	src="<%=application.getContextPath()%>/resources/js/photoresistorsensorvalue.js"></script>
+<script	src="<%=application.getContextPath()%>/resources/js/photoresistorsensorvalue.js"></script>
 <script src="<%=application.getContextPath()%>/resources/js/gauge.js"></script>
 
 
@@ -80,8 +76,31 @@
 
 
 	<!-- 게이지 바디 추가 -->
+	<head>
+<title>Speedometer</title>
+    <link rel='stylesheet'
+	href='https://fonts.googleapis.com/css?family=Play:700,400'
+	type='text/css'>
+    
+    <script type="text/javascript"
+	src="https://iop.io/js/vendor/d3.v3.min.js"></script>
+    <script type="text/javascript"
+	src="https://iop.io/js/vendor/polymer/PointerEvents/pointerevents.js"></script>
+    <script type="text/javascript"
+	src="https://iop.io/js/vendor/polymer/PointerGestures/pointergestures.js"></script>
+    <script type="text/javascript" src="https://iop.io/js/iopctrl.js"></script>
+    
+    <style>
+</style>
+</head>
+<body>
+    <div>
+        <span id="speedometer"></span>
+	<!--  하이차트
 	<div id="container"
 		style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+		
+		-->
 	<!-- 
 	<div class="container A">
 		<svg class="typeRange" height="165" width="330" view-box="0 0 330 165">
@@ -422,8 +441,8 @@
 								style="height: 270px; margin-top: 15px; border: 1px solid white;"></div>
 						</div>
 
-		
-						<div class='wrapper' style="height: 100px; width:200px"   >
+
+						<div class='wrapper' style="height: 100px; width: 200px">
 							<div class='lightbulb'>
 								<div class='head'>
 									<div class='wire'></div>
@@ -439,9 +458,9 @@
 								</div>
 							</div>
 							<div class='text'>#Photoresistor</div>
-					</div>
-			
-						
+						</div>
+
+
 					</div>
 					<div class="row">
 						<div class="col-lg-12">
@@ -460,4 +479,6 @@
 
 
 </body>
+
+
 </html>

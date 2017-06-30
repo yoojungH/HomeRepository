@@ -5,8 +5,6 @@ $(function() {
 		var data = JSON.parse(event.data);
 		var brightness = data.photoresistor;
 
-		// $("#divPhoto").html(brightness);
-
 		if (brightness < 80) {
 			$("#divPhoto").css("color", "#ffd666");
 
@@ -45,7 +43,7 @@ $(function() {
 			$(".wrapper .lightbulb .body .el__one").attr("style","opacity: 0.5");
 
 		} else {
-			$("#divPhoto").css("color", "#9b750a");
+			$("#divBulb").css("color", "#9b750a");
 			$(".wrapper .lightbulb .head").attr("style", "opacity: 0.4");
 			$(".wrapper .lightbulb .body .el__one").attr("style","opacity: 0.4");
 

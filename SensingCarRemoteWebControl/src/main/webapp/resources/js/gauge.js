@@ -1,101 +1,38 @@
-$(function(){
-	Highcharts.chart('container', {
+   var svg = d3.select("#speedometer")
+                .append("svg:svg")
+                .attr("width", 400)
+                .attr("height", 400);
 
-	    chart: {
-	        type: 'gauge',
-	        alignTicks: false,
-	        plotBackgroundColor: null,
-	        plotBackgroundImage: null,
-	        plotBorderWidth: 0,
-	        plotShadow: false
-	    },
 
-	    title: {
-	        text: 'Speedometer'
-	    },
+        var gauge = iopctrl.arcslider()
+                .radius(120)
+                .events(false)
+                .indicator(iopctrl.defaultGaugeIndicator);
+      
+       gauge.axis().orient("in")
+                .normalize(true)
+                .ticks(12)
+                .tickSubdivide(3)
+                .tickSize(10, 8, 10)
+                .tickPadding(5)
+                .scale(d3.scale.linear()
+                        .domain([0, 160])
+                        .range([-3*Math.PI/4, 3*Math.PI/4]));
+      
+      
+        svg.append("g")
+                .attr("class", "gauge")
+                .call(gauge);
+       var segDisplay = iopctrl.segdisplay()
+                .width(80)
+                .digitCount(6)
+                .negative(false)
+                .decimals(0);
 
-	    pane: {
-	        startAngle: -150,
-	        endAngle: 150
-	    },
-
-	    yAxis: [{
-	        min: 0,
-	        max: 200,
-	        lineColor: '#339',
-	        tickColor: '#339',
-	        minorTickColor: '#339',
-	        offset: -25,
-	        lineWidth: 2,
-	        labels: {
-	            distance: -20,
-	            rotation: 'auto'
-	        },
-	        tickLength: 5,
-	        minorTickLength: 5,
-	        endOnTick: false
-	    }, {
-	        min: 0,
-	        max: 124,
-	        tickPosition: 'outside',
-	        lineColor: '#933',
-	        lineWidth: 2,
-	        minorTickPosition: 'outside',
-	        tickColor: '#933',
-	        minorTickColor: '#933',
-	        tickLength: 5,
-	        minorTickLength: 5,
-	        labels: {
-	            distance: 12,
-	            rotation: 'auto'
-	        },
-	        offset: -20,
-	        endOnTick: false
-	    }],
-
-	    series: [{
-	        name: 'Speed',
-	        data: [80],
-	        dataLabels: {
-	            formatter: function () {
-	                var kmh = this.y;
-	                return '<span style="color:#339">' + kmh + ' km/h</span><br/>';
-	            },
-	            backgroundColor: {
-	                linearGradient: {
-	                    x1: 0,
-	                    y1: 0,
-	                    x2: 0,
-	                    y2: 1
-	                },
-	                stops: [
-	                    [0, '#DDD'],
-	                    [1, '#FFF']
-	                ]
-	            }
-	        },
-	        tooltip: {
-	            valueSuffix: ' km/h'
-	        }
-	    }]
-
-	},
-	    // Add some life
-	    function (chart) {
-	        setInterval(function () {
-	            if (chart.axes) { // not destroyed
-	                var point = chart.series[0].points[0],
-	                    newVal,
-	                    inc = Math.round((Math.random() - 0.5) * 20);
-
-	                newVal = point.y + inc;
-	                if (newVal < 0 || newVal > 200) {
-	                    newVal = point.y - inc;
-	                }
-
-	                point.update(newVal);
-	            }
-	        }, 3000);
-
-	    });
-});
+        svg.append("g")
+                .attr("class", "segdisplay")
+                .attr("transform", "translate(130, 200)")
+                .call(segDisplay);
+      
+      segDisplay.value(56749);
+        gauge.value(92);
